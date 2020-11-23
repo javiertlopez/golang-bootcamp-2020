@@ -2,6 +2,7 @@ package postgresql
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/javiertlopez/golang-bootcamp-2020/model"
 	"github.com/javiertlopez/golang-bootcamp-2020/repository"
@@ -11,6 +12,22 @@ import (
 
 type events struct {
 	db *sqlx.DB
+}
+
+type event struct {
+	ID            string     `db:"id"`
+	Description   string     `db:"description"`
+	Type          string     `db:"type"` // how can I predefine values here?
+	Status        string     `db:"status"`
+	CreatedAt     *time.Time `db:"created_at"`
+	UpdatedAt     *time.Time `db:"updated_at"`
+	EventDate     *time.Time `db:"event_date"`     // should I drop 'event_'?
+	EventLocation string     `db:"event_location"` // should I drop 'event_'?
+
+	// Customer information
+	Name  string `db:"name"`
+	Phone string `db:"phone"`
+	Email string `db:"email"`
 }
 
 // NewEventsRepo returns the EventRepository implementation
