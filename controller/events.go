@@ -87,7 +87,7 @@ func (e *eventController) GetReservations(w http.ResponseWriter, r *http.Request
 	vars := mux.Vars(r)
 	id := vars["id"]
 
-	_, err := e.events.GetByID(id)
+	event, err := e.events.GetByID(id)
 	if err != nil {
 		JSONResponse(
 			w, http.StatusNotFound,
@@ -100,7 +100,7 @@ func (e *eventController) GetReservations(w http.ResponseWriter, r *http.Request
 	}
 
 	// Step 1. Get reservations
-	reservations, err := e.events.GetReservations(id)
+	event.Reservations, err = e.events.GetReservations(id)
 	if err != nil {
 		JSONResponse(
 			w, http.StatusInternalServerError,
@@ -115,6 +115,6 @@ func (e *eventController) GetReservations(w http.ResponseWriter, r *http.Request
 	JSONResponse(
 		w,
 		http.StatusOK,
-		reservations,
+		event.Reservations,
 	)
 }
