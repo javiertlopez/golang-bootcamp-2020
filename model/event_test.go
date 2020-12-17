@@ -75,13 +75,12 @@ func TestEvent_filterReservations(t *testing.T) {
 			fields{
 				[]Reservation{
 					{Status: "CREATED"},
-					{Status: "CREATED"},
 					{Status: "CANCELED"},
 					{Status: "PAID"},
 				},
 			},
 			"CREATED",
-			2,
+			1,
 		},
 	}
 	for _, tt := range tests {

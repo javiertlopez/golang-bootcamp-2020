@@ -17,9 +17,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const (
-	mongoTimeout = 15 * time.Second
-)
+const mongoTimeout = 15 * time.Second
 
 // App holds the handler, and logger
 type App struct {

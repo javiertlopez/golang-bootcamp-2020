@@ -38,7 +38,7 @@ func Test_events_Create(t *testing.T) {
 			model.Event{
 				ID:           "123",
 				Reservations: []model.Reservation{reservation},
-				TotalFee:     2 * 7 * 2,
+				TotalFee:     28,
 			},
 			false,
 		},
@@ -117,7 +117,7 @@ func Test_events_GetByID(t *testing.T) {
 			model.Event{
 				ID:           "123",
 				Reservations: reservations,
-				TotalFee:     2 * 7 * 2,
+				TotalFee:     28,
 			},
 			false,
 		},
@@ -127,7 +127,7 @@ func Test_events_GetByID(t *testing.T) {
 			model.Event{
 				ID:           "789",
 				Reservations: reservations,
-				TotalFee:     2 * 7 * 2,
+				TotalFee:     28,
 			},
 			false,
 		},

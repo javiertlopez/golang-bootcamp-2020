@@ -16,6 +16,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+const (
+	NewStatus      = "NEW"
+	OKDescription  = "Wedding"
+	BadDescription = "Graduation"
+)
+
 func Test_eventController_CreateEvent(t *testing.T) {
 	events := &mocks.Events{}
 	e := &eventController{
@@ -23,19 +29,19 @@ func Test_eventController_CreateEvent(t *testing.T) {
 	}
 
 	event := model.Event{
-		Description: "Wedding",
-		Status:      "NEW",
+		Description: OKDescription,
+		Status:      NewStatus,
 	}
 
 	wrongEvent := model.Event{
-		Description: "Graduation",
-		Status:      "NEW",
+		Description: BadDescription,
+		Status:      NewStatus,
 	}
 
 	expectedEvent := model.Event{
 		ID:          "123",
-		Description: "Wedding",
-		Status:      "NEW",
+		Description: OKDescription,
+		Status:      NewStatus,
 	}
 
 	events.On("Create", event).Return(expectedEvent, nil)
@@ -122,8 +128,8 @@ func Test_eventController_GetEventByID(t *testing.T) {
 
 	expectedEvent := model.Event{
 		ID:          "123",
-		Description: "Wedding",
-		Status:      "NEW",
+		Description: OKDescription,
+		Status:      NewStatus,
 	}
 
 	events.On("GetByID", "123").Return(expectedEvent, nil)
