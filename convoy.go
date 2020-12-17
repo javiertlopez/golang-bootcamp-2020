@@ -75,9 +75,9 @@ func New(config AppConfig, logger *logrus.Logger) App {
 	router := router.New(controller)
 
 	return App{
-		logger,
-		router.Router(),
-		config,
+		logger: logger,
+		router: router.Router(),
+		config: config,
 	}
 }
 

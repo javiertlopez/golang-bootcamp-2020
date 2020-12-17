@@ -22,7 +22,8 @@ func TestEvent_CalculateTotalFee(t *testing.T) {
 			"Adults",
 			fields{
 				[]Reservation{
-					{Adults: 2,
+					{
+						Adults:    2,
 						Minors:    0,
 						AdultFee:  7,
 						MinorFee:  0,

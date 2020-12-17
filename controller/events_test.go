@@ -19,7 +19,7 @@ import (
 func Test_eventController_CreateEvent(t *testing.T) {
 	events := &mocks.Events{}
 	e := &eventController{
-		events,
+		events: events,
 	}
 
 	event := model.Event{
@@ -117,7 +117,7 @@ func Test_eventController_CreateEvent(t *testing.T) {
 func Test_eventController_GetEventByID(t *testing.T) {
 	events := &mocks.Events{}
 	e := &eventController{
-		events,
+		events: events,
 	}
 
 	expectedEvent := model.Event{
@@ -207,13 +207,14 @@ func Test_eventController_GetEventByID(t *testing.T) {
 func Test_eventController_GetReservations(t *testing.T) {
 	events := &mocks.Events{}
 	e := &eventController{
-		events,
+		events: events,
 	}
 
 	arrival := time.Date(2020, 1, 1, 4, 0, 0, 0, time.UTC)
 	departure := time.Date(2020, 1, 3, 18, 0, 0, 0, time.UTC)
 	reservations := []model.Reservation{
-		{Adults: 2,
+		{
+			Adults:    2,
 			Minors:    0,
 			AdultFee:  7,
 			MinorFee:  0,

@@ -34,9 +34,9 @@ func NewEventUseCase(
 	reservationCache repository.ReservationRepository,
 ) Events {
 	return &events{
-		eventRepo,
-		reservationRepo,
-		reservationCache,
+		eventRepo:        eventRepo,
+		reservationRepo:  reservationRepo,
+		reservationCache: reservationCache,
 	}
 }
 
