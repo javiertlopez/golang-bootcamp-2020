@@ -6,12 +6,12 @@ import "time"
 type Event struct {
 	ID            string     `json:"id"`
 	Description   string     `json:"description"`
-	Type          string     `json:"type"` // how can I predefine values here?
+	Type          string     `json:"type"`
 	Status        string     `json:"status"`
 	CreatedAt     *time.Time `json:"created_at"`
 	UpdatedAt     *time.Time `json:"updated_at"`
-	EventDate     *time.Time `json:"event_date"`     // should I drop 'event_'?
-	EventLocation string     `json:"event_location"` // should I drop 'event_'?
+	EventDate     *time.Time `json:"event_date"`
+	EventLocation string     `json:"event_location"`
 
 	// Customer information
 	Name  string `json:"name"`

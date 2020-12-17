@@ -5,8 +5,8 @@ import "time"
 // Reservation holds information for a single hotel reservation
 type Reservation struct {
 	ID        string     `json:"id"`
-	Status    string     `json:"status"` // how can I predefine values here?
-	Plan      string     `json:"plan"`   // how can I predefine values here?
+	Status    string     `json:"status"`
+	Plan      string     `json:"plan"`
 	Adults    int        `json:"adults"`
 	Minors    int        `json:"minors"`
 	AdultFee  float64    `json:"adult_fee"`
@@ -22,7 +22,6 @@ type Reservation struct {
 
 // totalFee returns the total cost of the reservation
 func (r *Reservation) totalFee() float64 {
-	// where should I validate that the fees are above 0?
 	// we have to calculate the total fee per night
 	cost := (float64(r.Adults) * r.AdultFee) + (float64(r.Minors) * r.MinorFee)
 

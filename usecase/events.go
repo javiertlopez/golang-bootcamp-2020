@@ -17,8 +17,6 @@ type Events interface {
 	// Reservation related. For CSV use.
 	AddReservations(id string, reservations []model.Reservation) ([]model.Reservation, error)
 	GetReservations(id string) ([]model.Reservation, error)
-
-	// Do I need to pass the context?
 }
 
 type events struct {
