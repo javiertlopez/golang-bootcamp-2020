@@ -17,8 +17,6 @@ type Events interface {
 	// Reservation related. For CSV use.
 	AddReservations(id string, reservations []model.Reservation) ([]model.Reservation, error)
 	GetReservations(id string) ([]model.Reservation, error)
-
-	// Do I need to pass the context?
 }
 
 type events struct {
@@ -34,9 +32,9 @@ func NewEventUseCase(
 	reservationCache repository.ReservationRepository,
 ) Events {
 	return &events{
-		eventRepo,
-		reservationRepo,
-		reservationCache,
+		eventRepo:        eventRepo,
+		reservationRepo:  reservationRepo,
+		reservationCache: reservationCache,
 	}
 }
 

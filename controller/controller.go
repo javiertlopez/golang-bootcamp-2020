@@ -21,6 +21,6 @@ type eventController struct {
 // NewEventController returns an EventController
 func NewEventController(events usecase.Events) EventController {
 	return &eventController{
-		events,
+		events: events,
 	}
 }

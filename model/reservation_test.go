@@ -31,7 +31,7 @@ func TestReservation_totalFee(t *testing.T) {
 				MinorFee:  0,
 				Arrival:   &arrival,
 				Departure: &departure,
-			}, 2 * 7 * 2,
+			}, 28,
 		},
 		{
 			"Adults and Minors",
@@ -42,7 +42,7 @@ func TestReservation_totalFee(t *testing.T) {
 				MinorFee:  1,
 				Arrival:   &arrival,
 				Departure: &departure,
-			}, ((2 * 7) + (2 * 1)) * 2,
+			}, 32,
 		},
 	}
 	for _, tt := range tests {

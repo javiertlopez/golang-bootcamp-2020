@@ -22,7 +22,8 @@ func TestEvent_CalculateTotalFee(t *testing.T) {
 			"Adults",
 			fields{
 				[]Reservation{
-					{Adults: 2,
+					{
+						Adults:    2,
 						Minors:    0,
 						AdultFee:  7,
 						MinorFee:  0,
@@ -74,13 +75,12 @@ func TestEvent_filterReservations(t *testing.T) {
 			fields{
 				[]Reservation{
 					{Status: "CREATED"},
-					{Status: "CREATED"},
 					{Status: "CANCELED"},
 					{Status: "PAID"},
 				},
 			},
 			"CREATED",
-			2,
+			1,
 		},
 	}
 	for _, tt := range tests {

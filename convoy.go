@@ -17,9 +17,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const (
-	mongoTimeout = 15 * time.Second
-)
+const mongoTimeout = 15 * time.Second
 
 // App holds the handler, and logger
 type App struct {
@@ -75,9 +73,9 @@ func New(config AppConfig, logger *logrus.Logger) App {
 	router := router.New(controller)
 
 	return App{
-		logger,
-		router.Router(),
-		config,
+		logger: logger,
+		router: router.Router(),
+		config: config,
 	}
 }
 

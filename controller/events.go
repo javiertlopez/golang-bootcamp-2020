@@ -87,20 +87,31 @@ func (e *eventController) GetReservations(w http.ResponseWriter, r *http.Request
 	vars := mux.Vars(r)
 	id := vars["id"]
 
-	_, err := e.events.GetByID(id)
+	event, err := e.events.GetByID(id)
 	if err != nil {
+		if err == errorcodes.ErrEventNotFound {
+			JSONResponse(
+				w, http.StatusNotFound,
+				Response{
+					Message: "Not found",
+					Status:  http.StatusNotFound,
+				},
+			)
+			return
+		}
+
 		JSONResponse(
-			w, http.StatusNotFound,
+			w, http.StatusInternalServerError,
 			Response{
-				Message: "Not found",
-				Status:  http.StatusNotFound,
+				Message: "Internal server error",
+				Status:  http.StatusInternalServerError,
 			},
 		)
 		return
 	}
 
 	// Step 1. Get reservations
-	reservations, err := e.events.GetReservations(id)
+	event.Reservations, err = e.events.GetReservations(id)
 	if err != nil {
 		JSONResponse(
 			w, http.StatusInternalServerError,
@@ -115,6 +126,6 @@ func (e *eventController) GetReservations(w http.ResponseWriter, r *http.Request
 	JSONResponse(
 		w,
 		http.StatusOK,
-		reservations,
+		event.Reservations,
 	)
 }
